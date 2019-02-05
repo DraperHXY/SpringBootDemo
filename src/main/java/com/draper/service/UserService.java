@@ -6,4 +6,8 @@ public interface UserService {
 
     int insert(User user);
 
+    User select(long id);
+
+    User selectByName(String name);
+
 }

@@ -1,8 +1,8 @@
-package com.draper.mapper;
+package com.draper.service;
 
 import com.draper.Application;
-import com.draper.config.Properties;
 import com.draper.domain.User;
+import com.draper.mapper.UserMapper;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,26 +14,19 @@ import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
-public class UserMapperTest {
+public class UserServiceTest {
 
     @Autowired
-    private UserMapper userMapper;
+    private UserService userService;
 
     @Test
-    @Rollback
-    public void testInsert() {
-
-    }
-
-    @Test
-    @Transactional
     public void testSelect() {
-        User user = new User();
-        user.setName("111");
-        user.setAge(22);
-        userMapper.insert(user);
-        user = userMapper.selectByName("111");
-        Assert.assertEquals(22l, (long)user.getAge());
+        userService.select(1L);
+        userService.select(1L);
+        userService.select(1L);
+        userService.select(1L);
+        userService.select(1L);
+        userService.select(1L);
     }
 }
 
