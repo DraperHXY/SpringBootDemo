@@ -3,6 +3,8 @@ spring:
     ansi:
       enabled: always
 
+  messages:
+    basename: i18n.login
 
   profiles:
     active: dev
@@ -69,24 +71,24 @@ spring:
         stat:
           log-slow-sql: true
 
-  redis:
-    # Redis数据库索引（默认为0）
-    database: 0
-    # Redis服务器地址
-    host: localhost
-    # Redis服务器连接端口
-    port: 6379
-    # 连接池最大连接数（使用负值表示没有限制）
-    # 连接池最大阻塞等待时间（使用负值表示没有限制）
-    # 连接池中的最大空闲连接
-    # 连接池中的最小空闲连接
-    # 连接超时时间（毫秒）
-    jedis:
-      pool:
-        max-idle: 8
-        max-wait: -1
-        min-idle: 0
-        max-active: 8
+#  redis:
+#    # Redis数据库索引（默认为0）
+#    database: 0
+#    # Redis服务器地址
+#    host: localhost
+#    # Redis服务器连接端口
+#    port: 6379
+#    # 连接池最大连接数（使用负值表示没有限制）
+#    # 连接池最大阻塞等待时间（使用负值表示没有限制）
+#    # 连接池中的最大空闲连接
+#    # 连接池中的最小空闲连接
+#    # 连接超时时间（毫秒）
+#    jedis:
+#      pool:
+#        max-idle: 8
+#        max-wait: -1
+#        min-idle: 0
+#        max-active: 8
 
   cache:
     redis:
@@ -111,4 +113,14 @@ person:
     - dog
     - bird
   map: {k1: v1,k2: v2}
+
+logging:
+  level:
+    springfox.documentation: trace
+    com.draper: trace
+    com.draper.mapper: info
+    com.draper.config: info
+  file: myLog.log
+debug: true
+
 

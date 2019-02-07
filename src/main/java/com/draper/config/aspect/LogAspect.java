@@ -77,7 +77,7 @@ public class LogAspect {
         sysLog.setCreateTime(date);
         // 保存系统日志
 //        sysLogDao.saveSysLog(sysLog);
-        log.info("sysLog = {}", sysLog);
+        log.trace("sysLog = {}", sysLog);
 
     }
 

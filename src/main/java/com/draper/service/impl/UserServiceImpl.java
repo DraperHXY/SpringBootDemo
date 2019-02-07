@@ -7,11 +7,10 @@ import com.draper.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.stereotype.Service;
 
 @Slf4j
-@EnableCaching
+//@EnableCaching
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -27,13 +26,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Log("查找")
-    @Cacheable("user")
+//    @Cacheable("user")
     @Override
     public User select(long id) {
+        log.trace("select id = [{}]", id);
         return userMapper.select(id);
     }
 
-    @Cacheable("user")
+//    @Cacheable("user")
     @Override
     public User selectByName(String name) {
         return userMapper.selectByName(name);
