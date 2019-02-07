@@ -29,10 +29,12 @@ public class MyWebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         // 用来添加没有什么处理方法的快捷操作
-        registry.addViewController("/").setViewName("index.html");
+        registry.addViewController("/").setViewName("login");
 //        registry.addViewController("/").setViewName("index"); 奇怪的是这个同样可以生效
 
-        registry.addViewController("/index.html").setViewName("index");
+        registry.addViewController("/index.html").setViewName("login");
+//        registry.addViewController("/user2/login").setViewName("index");
+        registry.addViewController("/main.html").setViewName("dashboard");
     }
 
 //    @Override

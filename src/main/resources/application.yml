@@ -10,6 +10,9 @@ spring:
     active: dev
     include: db, test
 
+#  thymeleaf:
+#    prefix: classpath:/templates
+
 
   datasource:
     druid:

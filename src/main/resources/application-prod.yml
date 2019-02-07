@@ -6,4 +6,4 @@ server:
 spring:
   thymeleaf:
     # 开发期间缓存关闭
-    cache: false
+    cache: true

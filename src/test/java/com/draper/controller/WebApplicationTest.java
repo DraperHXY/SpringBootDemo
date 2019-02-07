@@ -1,6 +1,5 @@
-package com.draper.web;
+package com.draper.controller;
 
-import com.draper.web.HelloController;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
