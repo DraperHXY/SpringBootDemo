@@ -44,7 +44,7 @@ public class MyWebMvcConfig implements WebMvcConfigurer {
 
     // 虽然不推荐了，但是还可以用
     @Bean
-    public WebMvcConfigurerAdapter webMvcConfigurerAdapter(){
+    public WebMvcConfigurerAdapter webMvcConfigurerAdapter() {
         return new WebMvcConfigurerAdapter() {
             @Override
             public void addViewControllers(ViewControllerRegistry registry) {
@@ -54,9 +54,14 @@ public class MyWebMvcConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    public LocaleResolver localeResolver(){
+    public LocaleResolver localeResolver() {
         return new MyLocaleResolver();
     }
 
-
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new LoginHandlerInterceptor())
+                .addPathPatterns("/**")
+                .excludePathPatterns("/index.html","/","/user2/login","/asserts/**","/webjars/**","/asserts2/**");
+    }
 }

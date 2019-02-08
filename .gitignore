@@ -26,3 +26,5 @@
 /target
 
 src/main/resources/application-db.yml
+
+myLog.log

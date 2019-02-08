@@ -24,7 +24,7 @@ logging:
 
 
 
-## 静态资源
+## 静态资源 (已解决)
 
 同样是放在 resources/static 下
 
