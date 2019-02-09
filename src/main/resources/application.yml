@@ -123,7 +123,7 @@ logging:
     com.draper: trace
     com.draper.mapper: info
     com.draper.config: info
-  file: myLog.log
+#  file: myLog.log
 debug: true
 
 
