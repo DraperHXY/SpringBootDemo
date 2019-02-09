@@ -1,7 +1,7 @@
 package com.draper.controller;
 
 
-import com.draper.config.MyException;
+import com.draper.config.exception.MyException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,8 +22,7 @@ public class HelloController {
 
     @RequestMapping("/json")
     public String json() throws MyException {
-        log.info("进入 json");
-
+        log.trace("进入 json");
         throw new MyException("发生错误2");
     }
 

@@ -20,12 +20,12 @@ public class LoginController {
                         Map<String, String> map,
                         HttpSession session){
         if (!StringUtils.isEmpty(username) && "123456".equals(password)){
-            log.info("登录成功");
+            log.trace("登录成功");
             session.setAttribute("loginUser",username);
             return "redirect:/main.html";
         } else {
             map.put("msg","用户名密码错误");
-            log.info("登录失败");
+            log.trace("登录失败");
             return "login";
         }
     }

@@ -1,4 +1,4 @@
-package com.draper.config;
+package com.draper.config.exception;
 
 public class MyException extends Exception{
 
