@@ -1,10 +1,18 @@
 package com.draper.config;
 
 import com.sun.org.apache.regexp.internal.RE;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.web.server.ConfigurableWebServerFactory;
+import org.springframework.boot.web.server.WebServerFactoryCustomizer;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.*;
+
+import java.util.Arrays;
 
 /**
  * 目标：实现 SpringMVC 的拓展，且并不影响其他的配置
@@ -21,6 +29,7 @@ import org.springframework.web.servlet.config.annotation.*;
  * 这个类继承了 {@link org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport}
  * 故无法使用自动配置
  */
+@Slf4j
 //@EnableWebMvc 不要接管 SpringMVC
 @Configuration
 public class MyWebMvcConfig implements WebMvcConfigurer {
@@ -64,4 +73,26 @@ public class MyWebMvcConfig implements WebMvcConfigurer {
 //                .addPathPatterns("/**")
 //                .excludePathPatterns("/index.html","/","/user2/login","/asserts/**","/webjars/**","/asserts2/**");
     }
+
+
+    @Bean
+    public ServletRegistrationBean myServlet() {
+        return new ServletRegistrationBean(new MyServlet(), "/servlet/myServlet");
+    }
+
+    @Bean
+    public FilterRegistrationBean myFilter() {
+        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+        registrationBean.setFilter(new MyFilter());
+        registrationBean.setUrlPatterns(Arrays.asList("/*"));
+        return registrationBean;
+    }
+
+    @Bean
+    public ServletListenerRegistrationBean myListener() {
+        ServletListenerRegistrationBean registrationBean = new ServletListenerRegistrationBean();
+        registrationBean.setListener(new MyListener());
+        return registrationBean;
+    }
+
 }
