@@ -9,10 +9,6 @@
 
 
 
-
-
-
-
 # bug
 
 ## 日志
@@ -91,4 +87,21 @@ public class GlobalExceptionHandler {
 ## Thymeleaf
 
 有问题待解决，为什么同样配置一会儿生效一会儿不行
+
+
+
+
+
+# 值得注意的底层
+
+## Jdbc
+
+#### ``org.springframework.boot.autoconfigure.jdbc``
+
+
+
+* ``DataSourceInitializerInvoker`` 实现 ApplicationListener 接口用来配置初始化 dataSource 前后的其他内容
+
+* ``DataSourceInitializer`` 初始化 DataSource, Table, Data
+* ``JdbcTemplateAutoConfiguration``  初始化 JdbcTemplate
 
