@@ -6,6 +6,7 @@
 * Global Handler Exception
 * Extend Spring MVC Web Config
 * Interceptor
+* Druid
 
 
 
@@ -94,9 +95,11 @@ public class GlobalExceptionHandler {
 
 # 值得注意的底层
 
-## Jdbc
+## Data Access Layer
 
-#### ``org.springframework.boot.autoconfigure.jdbc``
+###  Jdbc
+
+####``org.springframework.boot.autoconfigure.jdbc``
 
 
 
