@@ -106,5 +106,48 @@ public class GlobalExceptionHandler {
 * ``DataSourceInitializerInvoker`` 实现 ApplicationListener 接口用来配置初始化 dataSource 前后的其他内容
 
 * ``DataSourceInitializer`` 初始化 DataSource, Table, Data
+
 * ``JdbcTemplateAutoConfiguration``  初始化 JdbcTemplate
+
+* ``DataSourceConfiguration`` 用来配置连接池，默认使用 ``Hikari``
+
+  ``` Java
+  /**
+   * Hikari DataSource configuration.
+   */
+  @ConditionalOnClass(HikariDataSource.class)
+  @ConditionalOnMissingBean(DataSource.class)
+  @ConditionalOnProperty(name = "spring.datasource.type", havingValue = "com.zaxxer.hikari.HikariDataSource", matchIfMissing = true)
+  static class Hikari {
+  	@Bean
+  	@ConfigurationProperties(prefix = "spring.datasource.hikari")
+  	public HikariDataSource dataSource(DataSourceProperties properties) {
+  		HikariDataSource dataSource = createDataSource(properties,
+  				HikariDataSource.class);
+  		if (StringUtils.hasText(properties.getName())) {
+  			dataSource.setPoolName(properties.getName());
+  		}
+  		return dataSource;
+  	}
+  }
+  ```
+
+  
+
+
+
+## Web
+
+### WebContainer
+
+#### ``org.springframework.boot.autoconfigure.web.embedded``
+
+* ``EmbeddedWebServerFactoryCustomizerAutoConfiguration`` 用来选择**特定的** Web 容器
+
+* ``JettyWebServerFactoryCustomizer``
+* ``NettyWebServerFactoryCustomizer``
+* ``TomcatWebServerFactoryCustomizer``
+* ``UndertowWebServerFactoryCustomizer``
+
+
 
