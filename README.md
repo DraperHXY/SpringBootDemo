@@ -12,9 +12,8 @@
 
 # bug
 
-## 日志
 
-### Swagger2 的日志太多
+## Swagger2 的日志太多(已解决)
 
 ```yml
 logging:
@@ -23,6 +22,17 @@ logging:
 ```
 
 进行这个配置并没有减少日志，不知为什么
+
+
+正确的配置是
+```yml
+logging:
+  level:
+    springfox.documentation: error
+```
+
+这样将会屏蔽 springfox 在 error 级别以下的包
+
 
 
 

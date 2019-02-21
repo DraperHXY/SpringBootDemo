@@ -119,11 +119,11 @@ person:
 
 logging:
   level:
-    springfox.documentation: trace
+    springfox.documentation: error
     com.draper: trace
     com.draper.mapper: info
     com.draper.config: info
 #  file: myLog.log
-debug: true
+debug: false
 
 
